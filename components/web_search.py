@@ -79,6 +79,6 @@ def app():
         st.write('`Summary: `', processed_article2.summary)
 
         st.markdown('---')
-        st.write('**Other Articles**')
+        st.write('**Related Articles**')
         for i in other_links:
             st.markdown(f'- {i}')
