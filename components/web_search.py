@@ -66,17 +66,17 @@ def app():
                 processed_article1 = fetch_text_data(link1)
                 processed_article2 = fetch_text_data(link2)
             st.caption('Done!')
-        st.write('**Article 1**')
+        st.write('**Primary Article**')
         st.write('`Title: `', processed_article1.title)
         st.write('`URL: `', link1)
-        st.write('`Summary: `', processed_article1.summary)
+        st.write('`AI Generated Summary: `', processed_article1.summary)
 
         st.markdown('---')
 
-        st.write('**Article 2**')
+        st.write('**Secondary Article**')
         st.write('`Title: `', processed_article2.title)
         st.write('`URL: `', link2)
-        st.write('`Summary: `', processed_article2.summary)
+        st.write('`AI Generated Summary: `', processed_article2.summary)
 
         st.markdown('---')
         st.write('**Related Articles**')

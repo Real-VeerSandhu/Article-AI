@@ -30,7 +30,7 @@ def change_complexity(summary, range):
 def app():
     st.markdown('## Article Summary via URL')
 
-    st.write('Summarize an article to a custom length through its hyperlink')
+    st.write('Summarize a specific article to a custom length')
 
     url = str(st.text_input('Enter an Article URL'))
     complex_val = st.slider('Length & Complexity (%)', 1, 100)
@@ -44,5 +44,5 @@ def app():
                 full_summary = change_complexity(processed_article.summary, ceil(complex_val/25)+1)
             st.caption('Done!')
         st.write('`Title: `', processed_article.title)
-        st.write('`Summary: `', full_summary)
+        st.write('`AI Generated Summary: `', full_summary)
         st.write('`Key Words: `', processed_article.keywords)
