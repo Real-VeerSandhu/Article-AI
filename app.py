@@ -7,10 +7,10 @@ from components import summarize, web_search
 # Set up MultiApp feature (allows for multiple pages)
 app = MultiApp()
 
-st.set_page_config(page_title="Diplomatica Summarization AI", page_icon="⬛", layout='centered', initial_sidebar_state="collapsed")
+st.set_page_config(page_title="Article-AI", page_icon="📰", layout='centered', initial_sidebar_state="collapsed")
 
 st.markdown("""
-# Diplomatica Summarization AI
+# Article AI
 Use our Natural Language Processing algorithms to obtain articles and **produce brief summaries**
 """)
 
