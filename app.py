@@ -17,8 +17,8 @@ Use Natural Language Processing algorithms to obtain articles and **produce brie
 st.markdown('<button style="border-color: black; border-radius: 10;" ><a style="-webkit-appearance: button; -moz-appearance: button; appearance: button; text-decoration: none; color: initial;" href="https://diplomatica.vercel.app/dashboard" target="_blank">Return to Dashboard</a></button>', unsafe_allow_html=True)
 
 # Other pages
-app.add_app("Article Summary via Search", web_search.app)
-app.add_app("Article Summary via URL", summarize.app)
+app.add_app("Search Term", web_search.app)
+app.add_app("URL", summarize.app)
 
 # The main app
 app.run()
