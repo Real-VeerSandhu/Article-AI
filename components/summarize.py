@@ -3,7 +3,6 @@ import nltk
 nltk.download('punkt')
 from newspaper import Article
 
-import time
 from math import ceil
 
 def fetch_text_data(article):
