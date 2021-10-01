@@ -41,7 +41,7 @@ class MultiApp:
     def run(self):
         # app = st.sidebar.radio(
         app = st.sidebar.selectbox(
-            'Navigation',
+            'Select Summary Method',
             self.apps,
             format_func=lambda app: app['title'])
 
