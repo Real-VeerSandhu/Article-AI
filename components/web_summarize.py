@@ -57,28 +57,33 @@ def app():
 
         link1 = str(links[0])
         link2 = str(links[1])
+        link3 = str(links[2])
 
-        other_links = links[2:]
+
+        other_links = links[3:]
 
         with st.empty():
             for i in range(1):
                 st.caption('Evaluating...')
                 processed_article1 = fetch_text_data(link1)
                 processed_article2 = fetch_text_data(link2)
+                processed_article3 = fetch_text_data(link3)
             st.caption('Done!')
-        st.write('**Primary Article**')
+        st.write('**Article #1**')
         st.write('`Title: `', processed_article1.title)
         st.write('`URL: `', link1)
         st.write('`AI Generated Summary: `', processed_article1.summary)
-
         st.markdown('---')
-
-        st.write('**Secondary Article**')
+        st.write('**Article #2**')
         st.write('`Title: `', processed_article2.title)
         st.write('`URL: `', link2)
         st.write('`AI Generated Summary: `', processed_article2.summary)
-
         st.markdown('---')
-        st.write('**Related Articles**')
+        st.write('**Article #3**')
+        st.write('`Title: `', processed_article3.title)
+        st.write('`URL: `', link3)
+        st.write('`AI Summary: `', processed_article3.summary)
+        st.markdown('---')
+        st.write('**Related Generated Articles**')
         for i in other_links:
             st.markdown(f'- {i}')

@@ -44,4 +44,3 @@ def app():
             st.caption('Done!')
         st.write('`Title: `', processed_article.title)
         st.write('`AI Generated Summary: `', full_summary)
-        st.write('`Key Words: `', processed_article.keywords)
