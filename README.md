@@ -1,2 +1,2 @@
 # Article-AI
-An NLP system that summarizes articles and generates search queries. 
+A pipeline that collects article data from the web and summarizes information through NLP (extractive)
