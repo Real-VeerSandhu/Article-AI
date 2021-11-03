@@ -32,7 +32,7 @@ def app():
     st.write('Summarize a specific article to a custom length')
 
     url = str(st.text_input('Enter an Article URL'))
-    complex_val = st.slider('Length & Complexity (%)', 1, 100)
+    complex_val = st.slider('Length (%)', 1, 100)
     reader_article = Article(url)
     
     if (st.button('Summarize') and url != ''):
