@@ -1,3 +1,5 @@
+# Summarize articles via url input
+
 import streamlit as st
 import nltk
 nltk.download('punkt')

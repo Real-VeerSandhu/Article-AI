@@ -1,3 +1,5 @@
+# Query articles based on search term and summarize each fetched article
+
 import streamlit as st
 import nltk
 nltk.download('punkt')
