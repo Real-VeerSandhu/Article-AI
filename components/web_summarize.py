@@ -61,7 +61,6 @@ def app():
         link2 = str(links[1])
         link3 = str(links[2])
 
-
         other_links = links[3:]
 
         with st.empty():
