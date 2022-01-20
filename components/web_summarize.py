@@ -1,5 +1,6 @@
 # Query articles based on search term and summarize each fetched article
 
+from matplotlib.pyplot import LinearLocator
 import streamlit as st
 import nltk
 nltk.download('punkt')
@@ -10,7 +11,7 @@ from urllib.request import Request, urlopen
 from bs4 import BeautifulSoup
 import requests
 
-def get_links(user_search):
+def get_links(user_search): # Web scrape articles related to search query
     root = "https://www.google.com/"
     search_engine_string = 'search?q='
     search_engine_other_half = '&sxsrf=AOaemvIiKfd8dkMCkRXEhoZm3rjXFGMzCQ:1631931499445&source=lnms&tbm=nws&sa=X&ved=2ahUKEwikm8nKuofzAhUPElkFHVshBFUQ_AUoAnoECAEQBA&biw=1295&bih=697&dpr=2'
@@ -35,7 +36,7 @@ def get_links(user_search):
                 pass
     return lst
 
-def fetch_text_data(input_url):
+def fetch_text_data(input_url): # Fetch article data
     article = Article(input_url) 
 
     article.download()
@@ -45,6 +46,7 @@ def fetch_text_data(input_url):
     print('\nSUMMARY\n', article.summary)
     print('\nKEYWORDS\n', article.keywords)
     return article
+
 
 def app():
     st.markdown('## Article Summary via Search')
@@ -61,7 +63,18 @@ def app():
         link2 = str(links[1])
         link3 = str(links[2])
 
+        primary_links = links[:3]
         other_links = links[3:]
+
+        for i in range(len(primary_links)):
+            processed_article = fetch_text_data(primary_links[i])
+            st.write(f'**Article #{i+1}**')
+            st.write('`Title: `', processed_article.title)
+            st.write('`URL: `', primary_links[i])
+            st.write('`AI Generated Summary: `', processed_article.summary)
+
+            print(f'Link #{i+1} Completed @ {primary_links[i]}')
+
 
         with st.empty():
             for i in range(1):
@@ -85,6 +98,7 @@ def app():
         st.write('`URL: `', link3)
         st.write('`AI Summary: `', processed_article3.summary)
         st.markdown('---')
+
         st.write('**Related Generated Articles**')
         for i in other_links:
             st.markdown(f'- {i}')
