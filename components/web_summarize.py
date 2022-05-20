@@ -66,6 +66,7 @@ def app():
         primary_links = links[:3]
         other_links = links[3:]
 
+        # 2x calc
         with st.empty():
             for i in range(1):
                 st.caption('Evaluating...')
