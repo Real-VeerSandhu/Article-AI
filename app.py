@@ -11,7 +11,7 @@ st.set_page_config(page_title="Article AI", page_icon="📝", layout='centered',
 
 st.markdown("""
 # Article AI ◉
-Use Natural Language Processing to acquire articles and **produce brief summaries**
+Use Natural Language Processing to query articles and **produce brief summaries**
 """)
 
 st.markdown('----')
