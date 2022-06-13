@@ -47,7 +47,6 @@ def fetch_text_data(input_url): # Fetch article data
     print('\nKEYWORDS\n', article.keywords)
     return article
 
-
 def app():
     st.markdown('## Article Summary via Search')
 
