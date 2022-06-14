@@ -46,3 +46,6 @@ def app():
             st.caption('Done!')
         st.write('`Title: `', processed_article.title)
         st.write('`AI Generated Summary: `', full_summary)
+
+def read_history(value):
+    return value
