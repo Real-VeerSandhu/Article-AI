@@ -104,3 +104,4 @@ def app():
         st.write('**Related Generated Articles**')
         for i in other_links:
             st.markdown(f'- {i}')
+            
