@@ -37,7 +37,7 @@ def get_links(user_search): # Web scrape articles related to search query
     return lst
 
 def fetch_text_data(input_url): # Fetch article data
-    article = Article(input_url) 
+    article = Article(input_url)
 
     article.download()
     article.parse()
