@@ -66,39 +66,39 @@ def app():
         other_links = links[3:]
 
         # 2x calc for 3x articles
-        with st.empty():
-            for i in range(1):
-                st.caption('Evaluating...')
-                for i in range(len(primary_links)):
-                    processed_article = fetch_text_data(primary_links[i])
-                    st.write(f'**Article #{i+1}**')
-                    st.write('`Title: `', processed_article.title)
-                    st.write('`URL: `', primary_links[i])
-                    st.write('`AI Generated Summary: `', processed_article.summary)
-                    print(f'Link #{i+1} Completed @ {primary_links[i]}')
-            st.caption('Done!')
-
         # with st.empty():
         #     for i in range(1):
         #         st.caption('Evaluating...')
-        #         processed_article1 = fetch_text_data(link1)
-        #         processed_article2 = fetch_text_data(link2)
-        #         processed_article3 = fetch_text_data(link3)
+        #         for i in range(len(primary_links)):
+        #             processed_article = fetch_text_data(primary_links[i])
+        #             st.write(f'**Article #{i+1}**')
+        #             st.write('`Title: `', processed_article.title)
+        #             st.write('`URL: `', primary_links[i])
+        #             st.write('`AI Generated Summary: `', processed_article.summary)
+        #             print(f'Link #{i+1} Completed @ {primary_links[i]}')
         #     st.caption('Done!')
-        # st.write('**Article #1**')
-        # st.write('`Title: `', processed_article1.title)
-        # st.write('`URL: `', link1)
-        # st.write('`AI Generated Summary: `', processed_article1.summary)
-        # st.markdown('---')
-        # st.write('**Article #2**')
-        # st.write('`Title: `', processed_article2.title)
-        # st.write('`URL: `', link2)
-        # st.write('`AI Generated Summary: `', processed_article2.summary)
-        # st.markdown('---')
-        # st.write('**Article #3**')
-        # st.write('`Title: `', processed_article3.title)
-        # st.write('`URL: `', link3)
-        # st.write('`AI Summary: `', processed_article3.summary)
+
+        with st.empty():
+            for i in range(1):
+                st.caption('Evaluating...')
+                processed_article1 = fetch_text_data(link1)
+                processed_article2 = fetch_text_data(link2)
+                processed_article3 = fetch_text_data(link3)
+            st.caption('Done!')
+        st.write('**Article #1**')
+        st.write('`Title: `', processed_article1.title)
+        st.write('`URL: `', link1)
+        st.write('`AI Generated Summary: `', processed_article1.summary)
+        st.markdown('---')
+        st.write('**Article #2**')
+        st.write('`Title: `', processed_article2.title)
+        st.write('`URL: `', link2)
+        st.write('`AI Generated Summary: `', processed_article2.summary)
+        st.markdown('---')
+        st.write('**Article #3**')
+        st.write('`Title: `', processed_article3.title)
+        st.write('`URL: `', link3)
+        st.write('`AI Summary: `', processed_article3.summary)
         st.markdown('---')
 
         st.write('**Related Generated Articles**')
