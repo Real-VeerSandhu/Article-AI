@@ -1,6 +1,5 @@
 # Query articles based on search term and summarize each fetched article
 
-from matplotlib.pyplot import LinearLocator
 import streamlit as st
 import nltk
 nltk.download('punkt')
