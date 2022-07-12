@@ -1,4 +1,0 @@
-[theme]
-base="light"
-primaryColor="#00A200"
-textColor="#000000"
