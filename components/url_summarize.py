@@ -1,6 +1,5 @@
 # Summarize articles via url input
 
-from tabnanny import check
 import streamlit as st
 import nltk
 nltk.download('punkt')
