@@ -8,4 +8,3 @@ plotly==5.1.0
 requests==2.25.1
 beautifulsoup4==4.10.0
 newsapi-python==0.2.6
-python==3.8.12
