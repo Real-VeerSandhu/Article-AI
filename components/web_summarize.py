@@ -10,31 +10,46 @@ from newspaper import Article
 from urllib.request import Request, urlopen 
 from bs4 import BeautifulSoup
 import requests
+import pandas as pd
 
-def get_links(user_search): # Web scrape articles related to search query
-    root = "https://www.google.com/"
-    search_engine_string = 'search?q='
-    search_engine_other_half = '&sxsrf=AOaemvIiKfd8dkMCkRXEhoZm3rjXFGMzCQ:1631931499445&source=lnms&tbm=nws&sa=X&ved=2ahUKEwikm8nKuofzAhUPElkFHVshBFUQ_AUoAnoECAEQBA&biw=1295&bih=697&dpr=2'
-    link = root + search_engine_string + user_search + search_engine_other_half
-    lst = []
-    req = Request(link, headers={'User-Agent': 'Mozilla/5.0'})
-    webpage = urlopen(req).read()
-    with requests.Session() as c:
-        soup = BeautifulSoup(webpage, 'lxml')
-        for item in soup.find_all('div', attrs={'class':'kCrYT'}):
-            try:
-                try:
-                    raw_link = (item.find('a', href=True)['href'])
-                    link = (raw_link.split("/url?q=")[1]).split('&sa=U&')[0]
-                    if not link in lst:
-                        lst.append(link)
-                    else:
-                        pass
-                except IndexError:
-                    break
-            except TypeError:
-                pass
-    return lst
+from newsapi import NewsApiClient
+newsapi = NewsApiClient(api_key='a40f1e3c01c241e8b9432063eed5409c')
+
+# def get_links(user_search): # Web scrape articles related to search query
+#     root = "https://www.google.com/"
+#     search_engine_string = 'search?q='
+#     search_engine_other_half = '&sxsrf=AOaemvIiKfd8dkMCkRXEhoZm3rjXFGMzCQ:1631931499445&source=lnms&tbm=nws&sa=X&ved=2ahUKEwikm8nKuofzAhUPElkFHVshBFUQ_AUoAnoECAEQBA&biw=1295&bih=697&dpr=2'
+#     link = root + search_engine_string + user_search + search_engine_other_half
+#     lst = []
+#     req = Request(link, headers={'User-Agent': 'Mozilla/5.0'})
+#     webpage = urlopen(req).read()
+#     with requests.Session() as c:
+#         soup = BeautifulSoup(webpage, 'lxml')
+#         for item in soup.find_all('div', attrs={'class':'kCrYT'}):
+#             try:
+#                 try:
+#                     raw_link = (item.find('a', href=True)['href'])
+#                     link = (raw_link.split("/url?q=")[1]).split('&sa=U&')[0]
+#                     if not link in lst:
+#                         lst.append(link)
+#                     else:
+#                         pass
+#                 except IndexError:
+#                     break
+#             except TypeError:
+#                 pass
+#     return lst
+
+def get_links(term):    
+    data = newsapi.get_everything(q=term, language='en')
+    df = pd.DataFrame.from_dict(data)
+
+    articles = []
+
+    for i in range(10):
+        articles.append(df['articles'][i]['url'])
+    
+    return articles
 
 def fetch_text_data(input_url): # Fetch article data
     article = Article(input_url)
@@ -53,7 +68,7 @@ def app():
     st.write('Search the web for articles and output summaries')
 
     search_item = str(st.text_input('Enter Search Term(s)'))
-    search_item = search_item.replace(' ', '')
+    search_item = search_item.replace(' ', ' ')
     
     if (st.button('Search') and search_item != ''):
         links = get_links(search_item)
@@ -65,18 +80,6 @@ def app():
         primary_links = links[:3]
         other_links = links[3:]
 
-        # 2x calc for 3x articles
-        # with st.empty():
-        #     for i in range(1):
-        #         st.caption('Evaluating...')
-        #         for i in range(len(primary_links)):
-        #             processed_article = fetch_text_data(primary_links[i])
-        #             st.write(f'**Article #{i+1}**')
-        #             st.write('`Title: `', processed_article.title)
-        #             st.write('`URL: `', primary_links[i])
-        #             st.write('`AI Generated Summary: `', processed_article.summary)
-        #             print(f'Link #{i+1} Completed @ {primary_links[i]}')
-        #     st.caption('Done!')
 
         with st.empty():
             for i in range(1):
@@ -105,3 +108,15 @@ def app():
         for i in other_links:
             st.markdown(f'- {i}')
             
+        # 2x calc for 3x articles
+        # with st.empty():
+        #     for i in range(1):
+        #         st.caption('Evaluating...')
+        #         for i in range(len(primary_links)):
+        #             processed_article = fetch_text_data(primary_links[i])
+        #             st.write(f'**Article #{i+1}**')
+        #             st.write('`Title: `', processed_article.title)
+        #             st.write('`URL: `', primary_links[i])
+        #             st.write('`AI Generated Summary: `', processed_article.summary)
+        #             print(f'Link #{i+1} Completed @ {primary_links[i]}')
+        #     st.caption('Done!')
