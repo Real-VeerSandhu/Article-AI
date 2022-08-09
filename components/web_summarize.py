@@ -14,6 +14,8 @@ import pandas as pd
 from newsapi import NewsApiClient
 newsapi = NewsApiClient(api_key='a40f1e3c01c241e8b9432063eed5409c')
 
+# old web scraper
+
 # def get_links(user_search): # Web scrape articles related to search query
 #     root = "https://www.google.com/"
 #     search_engine_string = 'search?q='
@@ -38,6 +40,8 @@ newsapi = NewsApiClient(api_key='a40f1e3c01c241e8b9432063eed5409c')
 #             except TypeError:
 #                 pass
 #     return lst
+
+# fixed web scraper
 
 def get_links(term):    
     data = newsapi.get_everything(q=term, language='en')
