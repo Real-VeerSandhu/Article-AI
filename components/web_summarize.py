@@ -53,7 +53,8 @@ def get_links(term):
         articles.append(df['articles'][i]['url'])
 
     return articles   
-
+    
+    
 def fetch_text_data(input_url): # Fetch article data
     article = Article(input_url)
 
